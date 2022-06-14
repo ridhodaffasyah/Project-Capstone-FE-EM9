@@ -1,9 +1,8 @@
-const tokenData = localStorage.getItem('authToken');
+const tokenData = localStorage.getItem('token');
 let initialState: any = {};
 
 initialState = {
   isLogin: tokenData ? true : false,
-  token: tokenData ? tokenData : null,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -12,7 +11,6 @@ export default (state = initialState, action: { type: any; payload: any }) => {
     case 'LOGIN':
       return {
         isLogin: true,
-        token: action.payload,
       };
     default:
       return state;

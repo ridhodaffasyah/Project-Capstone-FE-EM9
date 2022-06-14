@@ -1,7 +1,13 @@
+interface LoginPayloadValue {
+  email: string;
+  password: string;
+}
+type Dispatch = (arg: { type: string; data?: {} | string }) => void;
+
 export const login =
-  (data: any) => (dispatch: (arg0: { type: string; payload: any }) => void) => {
+  (payload: LoginPayloadValue) => async (dispatch: Dispatch) => {
+    localStorage.setItem('token', 'asdasdsadasdada');
     dispatch({
       type: 'LOGIN',
-      payload: data,
     });
   };

@@ -9,12 +9,11 @@ import {
   InputRightElement,
   Button,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { login as _login } from '../store/actions/auth';
+import { connect } from 'react-redux';
 
-const Login = ({ login }: any) => {
+const Signup = ({ login }: any) => {
   const [show, setShow] = useState(false);
   const {
     register,
@@ -39,6 +38,18 @@ const Login = ({ login }: any) => {
         <div className="right-side">
           <div className="form-control">
             <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl marginBottom={4} isRequired>
+                <FormLabel htmlFor="name" fontWeight={600} fontSize={16}>
+                  Nama Lengkap
+                </FormLabel>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Enter Name"
+                  {...register('name')}
+                  height="37"
+                />
+              </FormControl>
               <FormControl isRequired>
                 <FormLabel htmlFor="email" fontWeight={600} fontSize={16}>
                   Email
@@ -54,11 +65,10 @@ const Login = ({ login }: any) => {
                   {errors.email && errors.email.message}
                 </FormErrorMessage>
               </FormControl>
-
               <FormControl isRequired>
                 <FormLabel
                   htmlFor="password"
-                  marginTop={6}
+                  marginTop={4}
                   fontWeight={600}
                   fontSize={16}
                 >
@@ -81,6 +91,32 @@ const Login = ({ login }: any) => {
                   {errors.password && errors.password.message}
                 </FormErrorMessage>
               </FormControl>
+              <FormControl isRequired>
+                <FormLabel
+                  htmlFor="password"
+                  marginTop={4}
+                  fontWeight={600}
+                  fontSize={16}
+                >
+                  Konfirmasi Password
+                </FormLabel>
+                <InputGroup size="md">
+                  <Input
+                    pr="4.5rem"
+                    type={show ? 'text' : 'password'}
+                    {...register('confirmPassword')}
+                    placeholder="Enter password"
+                  />
+                  <InputRightElement width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={handleClick}>
+                      {show ? 'Hide' : 'Show'}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+                <FormErrorMessage>
+                  {errors.confirmPassword && errors.confirmPassword.message}
+                </FormErrorMessage>
+              </FormControl>
               <Button
                 width="100%"
                 textTransform={'uppercase'}
@@ -90,14 +126,8 @@ const Login = ({ login }: any) => {
                 variant="solid"
                 type="submit"
               >
-                Masuk
+                Daftar
               </Button>
-              <h2 className="nav-content-reset">
-                Lupa password?{' '}
-                <Link to="/reset" className="nav-content-reset-2">
-                  Reset Password
-                </Link>
-              </h2>
             </form>
           </div>
         </div>
@@ -105,7 +135,6 @@ const Login = ({ login }: any) => {
     </div>
   );
 };
-
 export default connect(null, {
   login: _login,
-})(Login);
+})(Signup);
