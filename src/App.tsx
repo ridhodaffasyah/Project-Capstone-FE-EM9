@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { CourseList } from './pages/CourseList';
+import Course from './pages/Course';
 
 const PrivateRoute = ({ isLogin }: { isLogin: boolean }) => {
   return isLogin ? <Outlet /> : <Navigate to="/home" />;
@@ -31,6 +32,7 @@ function App({ isLogin }: { isLogin: boolean }) {
         </Route>
         <Route element={<PrivateRoute isLogin={isLogin} />}>
           <Route path="course-list" element={<CourseList />} />
+          <Route path="course" element={<Course />} />
         </Route>
       </Routes>
     </Router>
