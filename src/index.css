@@ -267,6 +267,20 @@ nav {
   text-underline-offset: 8px;
 }
 
+.center {
+  text-align: center;
+  align-items: center;
+}
+
+iframe{ 
+  display:block; 
+  margin:auto; 
+} 
+
+.center h1{
+  margin: 20px 0;
+}
+
 @media (max-width: 767px) {
   .container {
     padding: 0 30px;
