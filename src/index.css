@@ -281,6 +281,10 @@ iframe{
   margin: 20px 0;
 }
 
+.containerCourse-list{
+  padding: 5%;
+}
+
 @media (max-width: 767px) {
   .container {
     padding: 0 30px;
