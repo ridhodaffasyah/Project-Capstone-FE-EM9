@@ -17,7 +17,7 @@ const PrivateRoute = ({ isLogin }: { isLogin: boolean }) => {
 };
 
 const PublicRoute = ({ isLogin }: { isLogin: boolean }) => {
-  return !isLogin ? <Outlet /> : <Navigate to="/course-list" />;
+  return !isLogin ? <Outlet /> : <Navigate to="/course" />;
 };
 
 function App({ isLogin }: { isLogin: boolean }) {
@@ -31,7 +31,7 @@ function App({ isLogin }: { isLogin: boolean }) {
           <Route path="/signup" element={<Signup />} />
         </Route>
         <Route element={<PrivateRoute isLogin={isLogin} />}>
-          <Route path="course-list" element={<CourseList />} />
+          <Route path="course" element={<CourseList />} />
           <Route path="course/:title" element={<Course />} />
         </Route>
       </Routes>
